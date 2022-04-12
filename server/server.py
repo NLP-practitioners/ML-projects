@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 import util
 
 app = Flask(__name__)
-
+#Simple retrival of data
 @app.route('/get_location_names', methods=['GET'])
 def get_location_names():
     response = jsonify({
@@ -12,7 +12,8 @@ def get_location_names():
 
     return response
 
-@app.route('/predict_home_price', methods=['GET', 'POST'])
+#Post request are given to create data. Here we are predicting the house prices, i.e. creating a new price for given input.
+@app.route('/predict_home_price', methods=['POST'])
 def predict_home_price():
     total_sqft = float(request.form['total_sqft'])
     location = request.form['location']
